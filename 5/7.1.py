@@ -7,12 +7,18 @@
 # Укажите максимальное число, меньшее 344, которое может являться
 # результатом выполнения алгоритма.
 
-def to_base(x, base):
-    res = ""
-    while x != 0:
-        digit = x % base
-        res = str(digit) + res
-        x //= base             # // -> целочисленное деление 15 // 4 -> 3
-    return res
+from library import to_base
 
-print(to_base(42, 10))
+max_R = 0
+for N in range(1, 1000):
+    number = to_base(N, 6)
+    number += number[-1]
+    number = int(number, 6)
+    number = bin(number)[2:]
+    number += number[-1]
+
+    R = int(number, 2)
+    if max_R < R < 344:
+        max_R = R
+
+print(max_R)

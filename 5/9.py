@@ -14,9 +14,10 @@
 values = []
 for N in range(1000, 10000):
     number = str(N)
-    n = len(set(number))
+    n = len(set(number))  # set(x) привести последовательность
+                          # x к типу множество
+                          # set("1223") -> {'1', '2', '3'}
     if n == 4 and '0' not in number:
         values.append(N)
 
 print(values[-1] - values[0])
-
